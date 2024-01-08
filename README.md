@@ -1,2 +1,4 @@
 # Farmers_Ecommerce
-Agircultural_Yield_Ecommerce_For_Farmers
+This projects is on spring boot and mysql database. 
+This projects acts as a foundation for farmers to sell their yield directly to the customers. 
+
