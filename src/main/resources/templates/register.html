@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee Promotion Status</title>
+</head>
+<body>
+<h2>Employee Promotion Status</h2>
+<form th:action="@{/saveUser}" th:object="${users}" method="post">
+     Username: <input type="text" th:field="*{username}"><br><hr>
+     Email:<input type="email" th:field="*{email}"><br>
+    <hr>
+     Password: <input type="password" th:field="*{password}"><br>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

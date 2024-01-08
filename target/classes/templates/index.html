@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+
+        /* Custom CSS for the cards */
+        .card {
+            height: 400px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            margin-top: 90px;
+            overflow: hidden;
+            position: relative;
+            background-color: #ccc; /* Gray background color */
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4); /* Shadow on hover */
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .card-body {
+            background-color: #fff;
+            padding: 20px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        /* Updated background color for the body */
+        .cont{
+            background-color: #0e2433;
+            color: #000;
+        }
+
+        /* Card title and text styles */
+        .card-title {
+            font-size: 24px;
+            color: #267871; /* Classic text color */
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 16px;
+            color: #555; /* Classic text color */
+        }
+
+        /* Button style */
+        .btn-primary {
+            background-color: #2e67af; /* Classic blue button color */
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #1c4a7f; /* Darker blue on hover */
+        }
+
+        /* Card animation on hover */
+        .card:hover .card-body {
+            transform: translateY(-10px);
+        }
+
+        /* Card description visible on hover */
+        .card-description {
+            display: none;
+            color: #777; /* Classic text color */
+        }
+
+        .card:hover .card-description {
+            display: block;
+        }
+    </style>
+</head>
+<body class="cont">
+<div th:include="navbar"></div>
+
+<!-- Cards section -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="/css/images/download.jpeg" class="card-img-top" alt="Vegetables">
+                <div class="card-body">
+                    <h5 class="card-title">Vegetables</h5>
+                    <p class="card-text card-description">Explore our fresh vegetable selection.</p>
+                    <a href="/vegetables" class="btn btn-primary btn-block">View Vegetables</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <img src="/css/images/fruits.jpeg" class="card-img-top" alt="Fruits">
+                <div class="card-body">
+                    <h5 class="card-title">Fruits</h5>
+                    <p class="card-text card-description">Discover our delicious fruit offerings.</p>
+                    <a href="/fruits" class="btn btn-primary btn-block">View Fruits</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <img src="/css/images/dairy.jpeg" class="card-img-top" alt="Dairy">
+                <div class="card-body">
+                    <h5 class="card-title">Dairy Products</h5>
+                    <p class="card-text card-description">Check out our dairy product collection.</p>
+                    <a href="/dairy" class="btn btn-primary btn-block">View Dairy Products</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    (function(d, m){
+        var kommunicateSettings =
+            {"appId":"1eb7d78d4064486edac974b29248f0b4b","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+        window.kommunicate = m; m._globals = kommunicateSettings;
+    })(document, window.kommunicate || {});
+    /* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+</script>
+<!-- Footer section -->
+<div th:include="footer"></div>
+
+</body>
+</html>

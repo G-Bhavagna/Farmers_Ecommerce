@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Add your CSS and other head content here -->
+    <style>
+        /* Custom CSS for the cards */
+        .card {
+            margin-bottom: 20px;
+            background-color: #fff; /* Card background color */
+            border-radius: 15px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
+        }
+
+        .card-img {
+            max-height: 200px; /* Set a maximum height for the product images */
+            object-fit: cover;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .card-body {
+            padding: 20px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            color: #000; /* Text color within the card */
+        }
+
+        /* Updated background color for the body */
+        .cont {
+            background-color: #0e2433;
+            color: #fff; /* White text color for the page */
+        }
+
+        /* Checkout button and total price CSS */
+        .checkout-container {
+            text-align: left;
+            padding-top: 20px;
+        }
+
+        .checkout-button {
+            background-color: #007bff; /* Blue color for the button */
+            color: #fff; /* White text color for the button */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .total-price {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="cont">
+
+<div th:include="navbar"></div>
+
+<div class="container mt-5">
+    <h2>Your Cart</h2>
+
+    <!-- Check if the cart is empty -->
+    <div th:if="${cartItems.isEmpty()}">
+        <p>Your cart is empty.</p>
+    </div>
+
+    <!-- Initialize total price variable -->
+
+
+    <!--    <th:block th:with="totalPrice=0.0"></th:block>-->
+
+    <!-- Iterate over cart items and display them -->
+    <div th:each="cartItem : ${cartItems}">
+        <div class="card mb-3">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <!-- Add your conditional image logic here -->
+                    <img th:if="${cartItem.category == 'Dairy Products'}" th:src="@{/css/images/dairy.jpeg}" class="card-img" alt="Product Image">
+                    <img th:if="${cartItem.category == 'Fruits'}" th:src="@{/css/images/fruits.jpeg}" class="card-img" alt="Product Image">
+                    <img th:if="${cartItem.category == 'Vegetables'}" th:src="@{/css/images/download.jpeg}" class="card-img" alt="Product Image">
+
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${cartItem.name}"></h5>
+                        <p class="card-text" th:text="${cartItem.description}"></p>
+                        <p class="card-text" th:text="'Price: $' + ${cartItem.price}"></p>
+                        <!-- Add any other cart item information you want to display -->
+
+                        <!-- Example: Button to remove the item from the cart -->
+                        <a th:href="@{'/removeFromCart/' + ${cartItem.id}}" class="btn btn-danger">Remove</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Update total price variable with null-check and default value -->
+        <!--        <th:block th:if="${cartItem.price != null}" th:with="totalPrice=${totalPrice + (cartItem.price ?: 0.0)}"></th:block>-->
+    </div>
+
+    <!-- Display total price and checkout button -->
+    <div class="checkout-container">
+        <p class="total-price" th:text="'Total Price: $' + ${totalPrice}"></p>
+       <a th:href="@{/pay}"> <button class="checkout-button">Check Out</button></a>
+    </div>
+</div>
+</body>
+</html>
